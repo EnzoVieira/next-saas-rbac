@@ -1,0 +1,22 @@
+{
+  "name": "@repo/auth",
+  "version": "0.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/prettier": "*",
+    "@repo/tsconfig": "*"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@repo/eslint-config/library"
+    ]
+  },
+  "prettier": "@repo/prettier",
+  "dependencies": {
+    "@casl/ability": "^6.7.1",
+    "zod": "^3.23.8"
+  }
+}
