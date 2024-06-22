@@ -2,16 +2,22 @@
   "name": "@repo/api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/http/server.ts"
   },
   "dependencies": {
-    "@repo/auth": "*"
+    "@fastify/cors": "^9.0.1",
+    "@prisma/client": "^5.15.1",
+    "@repo/auth": "*",
+    "fastify": "^4.28.0",
+    "fastify-type-provider-zod": "^1.2.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/prettier": "*",
     "@repo/tsconfig": "*",
     "@types/node": "^20.14.2",
+    "prisma": "^5.15.1",
     "tsx": "^4.15.6"
   },
   "prettier": "@repo/prettier",
