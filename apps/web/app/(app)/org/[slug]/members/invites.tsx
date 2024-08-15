@@ -1,11 +1,7 @@
 import { ability, getCurrentOrg } from '@/authenticate/auth'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table'
 import { getInvites } from '@/http/get-invites'
-import { XOctagon } from 'lucide-react'
-import Image from 'next/image'
 import { RevokeInviteButton } from './revoke-invite-button'
 import { CreateInviteForm } from './create-invite-form'
 
