@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
+# Next.js SaaS + RBAC
 
-## Getting Started
+This project contains all the necessary boilerplate to setup a multi-tenant SaaS with Next.js including authentication and RBAC authorization.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Authentication
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [ ] It should be able to authenticate using e-mail & password;
+- [ ] It should be able to authenticate using Github account;
+- [ ] It should be able to recover password using e-mail;
+- [x] It should be able to create an account (e-mail, name and password);
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Organizations
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Inter, a custom Google Font.
+- [ ] It should be able to create a new organization;
+- [ ] It should be able to get organizations to which the user belongs;
+- [ ] It should be able to update an organization;
+- [ ] It should be able to shutdown an organization;
+- [ ] It should be able to transfer organization ownership;
 
-## Learn More
+### Invites
 
-To learn more about Next.js, take a look at the following resources:
+- [ ] It should be able to invite a new member (e-mail, role);
+- [ ] It should be able to accept an invite;
+- [ ] It should be able to revoke a pending invite;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Members
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [ ] It should be able to get organization members;
+- [ ] It should be able to update a member role;
 
-## Deploy on Vercel
+### Projects
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [ ] It should be able to get projects within a organization;
+- [ ] It should be able to create a new project (name, url, description);
+- [ ] It should be able to update a project (name, url, description);
+- [ ] It should be able to delete a project;
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Billing
+
+- [ ] It should be able to get billing details for organization ($20 per project / $10 per member excluding billing role);
+
+## RBAC
+
+Roles & permissions.
+
+### Roles
+
+- Owner (count as administrator)
+- Administrator
+- Member
+- Billing (one per organization)
+- Anonymous
+
+### Permissions table
+
+|                        | Administrator | Member | Billing | Anonymous |
+| ---------------------- | ------------- | ------ | ------- | --------- |
+| Update organization    | ✅            | ❌     | ❌      | ❌        |
+| Delete organization    | ✅            | ❌     | ❌      | ❌        |
+| Invite a member        | ✅            | ❌     | ❌      | ❌        |
+| Revoke an invite       | ✅            | ❌     | ❌      | ❌        |
+| List members           | ✅            | ✅     | ✅      | ❌        |
+| Transfer ownership     | ⚠️            | ❌     | ❌      | ❌        |
+| Update member role     | ✅            | ❌     | ❌      | ❌        |
+| Delete member          | ✅            | ⚠️     | ❌      | ❌        |
+| List projects          | ✅            | ✅     | ✅      | ❌        |
+| Create a new project   | ✅            | ✅     | ❌      | ❌        |
+| Update a project       | ✅            | ⚠️     | ❌      | ❌        |
+| Delete a project       | ✅            | ⚠️     | ❌      | ❌        |
+| Get billing details    | ✅            | ❌     | ✅      | ❌        |
+| Export billing details | ✅            | ❌     | ✅      | ❌        |
+
+> ✅ = allowed
+> ❌ = not allowed
+> ⚠️ = allowed w/ conditions
+
+#### Conditions
+
+- Only owners may transfer organization ownership;
+- Only administrators and project authors may update/delete the project;
+- Members can leave their own organization;
