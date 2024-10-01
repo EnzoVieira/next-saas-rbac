@@ -1,3 +1,7 @@
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import { ArrowRight } from 'lucide-react'
+
 import { getCurrentOrg } from '@/authenticate/auth'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
@@ -9,9 +13,6 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { getProjects } from '@/http/get-projects'
-import { ArrowRight } from 'lucide-react'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
 
 dayjs.extend(relativeTime)
 

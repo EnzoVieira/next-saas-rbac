@@ -1,5 +1,8 @@
 'use client'
 
+import { Role } from '@repo/auth'
+import { ComponentProps } from 'react'
+
 import {
   Select,
   SelectContent,
@@ -7,8 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Role } from '@repo/auth'
-import { ComponentProps } from 'react'
+
 import { updateMemberAction } from './actions'
 
 interface UpdateMemberRoleSelectProps extends ComponentProps<typeof Select> {

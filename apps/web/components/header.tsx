@@ -1,14 +1,15 @@
-import Image from 'next/image'
-import { ProfileButton } from './profile-button'
 import { Slash } from 'lucide-react'
+import Image from 'next/image'
 
 import rocketseatIcon from '@/assets/rocketseat-icon.svg'
-import { OrganizationSwitcher } from './organization-switcher'
 import { ability } from '@/authenticate/auth'
-import { Separator } from './ui/separator'
-import { ThemeSwitcher } from './theme/theme-switcher'
-import { ProjectSwitcher } from './project-switcher'
+
+import { OrganizationSwitcher } from './organization-switcher'
 import { PendingInvites } from './pending-invites'
+import { ProfileButton } from './profile-button'
+import { ProjectSwitcher } from './project-switcher'
+import { ThemeSwitcher } from './theme/theme-switcher'
+import { Separator } from './ui/separator'
 
 export async function Header() {
   const permissions = await ability()

@@ -10,7 +10,7 @@ interface FormState {
 export function useFormState(
   action: (data: FormData) => Promise<FormState>,
   onSuccess?: () => Promise<void> | void,
-  initialState?: FormState
+  initialState?: FormState,
 ) {
   const [isPending, startTransition] = useTransition()
   const [formState, setFormState] = useState(
@@ -18,7 +18,7 @@ export function useFormState(
       success: false,
       message: null,
       errors: null,
-    }
+    },
   )
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {

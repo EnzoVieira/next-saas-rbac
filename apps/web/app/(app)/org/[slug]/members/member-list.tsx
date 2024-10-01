@@ -1,13 +1,15 @@
+import { organizationSchema } from '@repo/auth'
+import { ArrowLeftRight, Crown, UserMinus } from 'lucide-react'
+import Image from 'next/image'
+
 import { ability, getCurrentOrg } from '@/authenticate/auth'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table'
 import { getMembers } from '@/http/get-members'
 import { getMembership } from '@/http/get-membership'
 import { getOrganization } from '@/http/get-organization'
-import { organizationSchema } from '@repo/auth'
-import { ArrowLeftRight, Crown, UserMinus } from 'lucide-react'
-import Image from 'next/image'
+
 import { removeMemberAction } from './actions'
 import { UpdateMemberRoleSelect } from './update-member-role-select'
 
@@ -69,7 +71,7 @@ export async function MembersList() {
                   <div className="flex items-center justify-end gap-2">
                     {permissions?.can(
                       'transfer_ownership',
-                      authOrganization
+                      authOrganization,
                     ) && (
                       <Button size="sm" variant="ghost">
                         <ArrowLeftRight className="mr-2 size-4" />

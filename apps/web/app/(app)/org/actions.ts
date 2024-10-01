@@ -1,12 +1,12 @@
 'use server'
 
+import { HTTPError } from 'ky'
+import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
 
-import { HTTPError } from 'ky'
-import { createOrganization } from '@/http/create-organization'
 import { getCurrentOrg } from '@/authenticate/auth'
+import { createOrganization } from '@/http/create-organization'
 import { updateOrganization } from '@/http/update-organization'
-import { revalidateTag } from 'next/cache'
 
 const organizationSchema = z
   .object({
@@ -24,7 +24,7 @@ const organizationSchema = z
 
           return true
         },
-        { message: 'Enter a valid domain' }
+        { message: 'Enter a valid domain' },
       ),
     shouldAttachUsersByDomain: z
       .union([z.literal('on'), z.literal('off'), z.boolean()])
@@ -42,7 +42,7 @@ const organizationSchema = z
     {
       message: 'Domain is required when auto-join is enabled',
       path: ['domain'],
-    }
+    },
   )
 
 export type OrganizationSchema = z.infer<typeof organizationSchema>

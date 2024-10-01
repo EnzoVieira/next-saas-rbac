@@ -1,13 +1,15 @@
 'use client'
 
-import { Check, UserPlus2, X } from 'lucide-react'
-import { Button } from '../ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { getPendingInvites } from '@/http/get-pending-invites'
+import { Check, UserPlus2, X } from 'lucide-react'
 import { useState } from 'react'
+
+import { getPendingInvites } from '@/http/get-pending-invites'
+
+import { Button } from '../ui/button'
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { acceptInviteAction, rejectInviteAction } from './actions'
 
 dayjs.extend(relativeTime)
@@ -16,7 +18,7 @@ export function PendingInvites() {
   const queryClient = useQueryClient()
   const [isOpen, setIsOpen] = useState(false)
 
-  const { isLoading, data, refetch } = useQuery({
+  const { data } = useQuery({
     queryKey: ['pending-invites'],
     queryFn: () => getPendingInvites(),
     enabled: isOpen,

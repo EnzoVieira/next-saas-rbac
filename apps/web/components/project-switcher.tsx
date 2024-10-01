@@ -1,6 +1,13 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
 import { ChevronsUpDown, Loader2, PlusCircle } from 'lucide-react'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
+
+import { getProjects } from '@/http/get-projects'
+
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,11 +17,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
-import Link from 'next/link'
-import { useParams } from 'next/navigation'
-import { getProjects } from '@/http/get-projects'
-import { useQuery } from '@tanstack/react-query'
 import { Skeleton } from './ui/skeleton'
 
 export function ProjectSwitcher() {

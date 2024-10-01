@@ -1,7 +1,9 @@
-import { ability, getCurrentOrg } from '@/authenticate/auth'
-import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react'
 import Link from 'next/link'
+
+import { ability, getCurrentOrg } from '@/authenticate/auth'
+import { Button } from '@/components/ui/button'
+
 import { ProjectsList } from './project-list'
 
 export default async function Projects() {

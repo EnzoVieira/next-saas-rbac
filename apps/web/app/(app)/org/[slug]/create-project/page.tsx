@@ -1,6 +1,8 @@
-import { ProjectForm } from './project-form'
-import { ability } from '@/authenticate/auth'
 import { redirect } from 'next/navigation'
+
+import { ability } from '@/authenticate/auth'
+
+import { ProjectForm } from './project-form'
 
 export default async function CreateProject() {
   const permissions = await ability()
