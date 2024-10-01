@@ -7,7 +7,7 @@
     "db:studio": "npm run env:load prisma studio",
     "env:load": "dotenv -e ../../.env --",
     "build": "tsup",
-    "start:": "node dist/http/server.js"
+    "start": "node dist/http/server.js"
   },
   "dependencies": {
     "@fastify/cors": "^9.0.1",
